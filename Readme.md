@@ -86,3 +86,10 @@ print("Good nut" if prediction > 0.5 else "Bad nut")
 
 ## License
 This project is licensed under the **MIT** license.
+
+## 💡If you find this project useful, you can support my work — even a small donation makes a difference
+- **Crypto donation: USDT (TRC20):** `TCECqH8ZxXGCQuWZeto1nV9nawbeeV4fG8`
+- **Crypto donation: Bitcoin (BTC):** `bc1q3lvprzayxd3qulk0epk5dh58zx36mfev76wj30`
+- **Crypto donation: Ethereum (ETH):** `0x80DbC00Fd91bAb3D4FE6E6441Dae0719e6bF5c9e`
+- **International card (Visa/Mastercard):**  
+[https://www.donationalerts.com/r/johngear](https://www.donationalerts.com/r/johngear)
