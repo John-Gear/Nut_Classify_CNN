@@ -1,11 +1,5 @@
-numpy
-pandas
-matplotlib
-seaborn
-scikit-learn
-catboost
+tensorflow
 joblib
 pyyaml
 flask
 ipykernel
-lightgbm
