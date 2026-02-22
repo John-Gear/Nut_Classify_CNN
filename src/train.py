@@ -2,20 +2,11 @@ import os
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Activation, Dropout, Flatten, Dense
+from keras.optimizers import Adamimport os
+from keras.preprocessing.image import ImageDataGenerator
+from keras.models import Sequential
+from keras.layers import Conv2D, MaxPooling2D, Activation, Dropout, Flatten, Dense
 from keras.optimizers import Adam
-
-# Configuration parameters
-IMG_WIDTH, IMG_HEIGHT = 150, 150  # Image dimensions
-INPUT_SHAPE = (IMG_WIDTH, IMG_HEIGHT, 3)  # Input shape for the model
-EPOCHS = 10  # Number of training epochs
-BATCH_SIZE = 10  # Batch size for training
-TRAIN_SAMPLES = 4000  # Number of training samples
-VALIDATION_SAMPLES = 500  # Number of validation samples
-TEST_SAMPLES = 500  # Number of test samples
-DATA_DIR = "./data"  # Root directory for data
-TRAIN_DIR = os.path.join(DATA_DIR, "train")  # Training dataset path
-VAL_DIR = os.path.join(DATA_DIR, "val")  # Validation dataset path
-TEST_DIR = os.path.join(DATA_DIR, "test")  # Test dataset path
 
 # Model definition
 model = Sequential([
@@ -31,21 +22,10 @@ model = Sequential([
     Dense(1, activation='sigmoid')  # Output layer with sigmoid activation for binary classification
 ])
 
+
 # Compile the model
 model.compile(loss='binary_crossentropy', optimizer=Adam(), metrics=['accuracy'])
 
-# Data generators for training, validation, and testing
-
-datagen = ImageDataGenerator(rescale=1.0 / 255)  # Normalize pixel values
-
-train_generator = datagen.flow_from_directory(
-    TRAIN_DIR, target_size=(IMG_WIDTH, IMG_HEIGHT), batch_size=BATCH_SIZE, class_mode='binary')
-
-val_generator = datagen.flow_from_directory(
-    VAL_DIR, target_size=(IMG_WIDTH, IMG_HEIGHT), batch_size=BATCH_SIZE, class_mode='binary')
-
-test_generator = datagen.flow_from_directory(
-    TEST_DIR, target_size=(IMG_WIDTH, IMG_HEIGHT), batch_size=BATCH_SIZE, class_mode='binary')
 
 # Train the model
 model.fit(
