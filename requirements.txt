@@ -3,3 +3,4 @@ joblib
 pyyaml
 flask
 ipykernel
+numpy
