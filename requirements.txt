@@ -4,3 +4,4 @@ pyyaml
 flask
 ipykernel
 numpy
+keras
