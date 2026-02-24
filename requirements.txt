@@ -1,8 +1,5 @@
 tensorflow
-joblib
-pyyaml
-flask
-ipykernel
 numpy
 keras
 scikit-learn
+pillow
