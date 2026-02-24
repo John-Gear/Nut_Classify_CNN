@@ -1,93 +1,93 @@
 # Nut Classification CNN
 
-## Project Description
-This project is a Convolutional Neural Network (CNN) designed to classify nuts as "good" or "bad." The neural network is trained on images of nuts and can then predict the quality of new images.
+## Описание проекта
+Этот проект представляет собой сверточную нейронную сеть (CNN), разработанную для классификации орехов на "хорошие" и "плохие". Нейросеть обучается на изображениях орехов, после чего может предсказывать качество новых изображений.
 
-The model was developed as a diploma project and can be adapted for classifying other products or industrial tasks (e.g., quality control in manufacturing or object recognition in customs inspection).
+Модель была разработана как дипломный проект и может быть адаптирована для классификации других товаров или промышленных задач (например, контроль качества продукции или распознавание объектов в таможенном деле).
 
-The model achieved **94.80% accuracy** on a test dataset of 5000 images.
+Точность модели на тестовых данных из 5000 изображений составила **94.80%**.
 
-## Technologies Used
+## Используемые технологии
 - Python 3.8+
 - TensorFlow + Keras
 - NumPy
-- ImageDataGenerator for image loading
+- ImageDataGenerator для загрузки изображений
 
-## Installation
-Before starting, install the required dependencies:
+## Установка
+Перед началом работы установите зависимости:
 ```sh
 pip install tensorflow numpy keras
 ```
 
-## Data Preparation
-A total of **5000 images of nuts** were taken on a **green background**, divided into two classes:
-- **2500 images of good nuts**
-- **2500 images of bad nuts**
+## Подготовка данных
+В ходе работы было отснято **5000 фотографий орехов** на **зеленом фоне** в двух классах:
+- **2500 фотографий хороших орехов**
+- **2500 фотографий плохих орехов**
 
-Example images (good nut/bad nut):
-- ![Good Nut](https://github.com/garpastyls/Nut_Classify_CNN/blob/main/Good%20nut.png)
-- ![Bad Nut](https://github.com/garpastyls/Nut_Classify_CNN/blob/main/Bad%20nut.png)
+Примеры изображений (хороший орех/плохой орех):
+- ![Хороший орех](https://github.com/garpastyls/Nut_Classify_CNN/blob/main/Good%20nut.png)
+- ![Плохой орех](https://github.com/garpastyls/Nut_Classify_CNN/blob/main/Bad%20nut.png)
 
-### Data Organization
-Create a `data/` directory with the following subdirectories:
+### Организация данных
+Необходимо создать директорию `data/` с подпапками:
 ```
 data/
-├── train/      # 4000 images (80%)
-│   ├── good/   # 2000 images
-│   ├── bad/    # 2000 images
-├── val/        # 500 images (10%)
-│   ├── good/   # 250 images
-│   ├── bad/    # 250 images
-├── test/       # 500 images (10%)
-│   ├── good/   # 250 images
-│   ├── bad/    # 250 images
+├── train/      # 4000 изображений (80%)
+│   ├── good/   # 2000 изображений
+│   ├── bad/    # 2000 изображений
+├── val/        # 500 изображений (10%)
+│   ├── good/   # 250 изображений
+│   ├── bad/    # 250 изображений
+├── test/       # 500 изображений (10%)
+│   ├── good/   # 250 изображений
+│   ├── bad/    # 250 изображений
 ```
 
-## Training the Model
-Run the Python script to train the model:
+## Обучение модели
+Запустите Python-скрипт для обучения модели:
 ```sh
-python Nut_CNN.py
+python Сверточная_нейронная_сеть.py
 ```
-After training, the model will be saved in the file `nut_classifier.h5`. The **.h5** file format is used to store trained model weights in Keras.
+После обучения модель сохранится в файле `nut_classifier.h5`. Файл **.h5** используется для хранения весов обученной модели в Keras.
 
-## Example Usage
+## Пример использования модели
 ```python
 from keras.models import load_model
 from keras.preprocessing import image
 import numpy as np
 
-# Load the pre-trained model
+# Загрузка предобученной модели
 model = load_model("nut_classifier.h5")
 
-# Load an image
+# Загрузка изображения
 img = image.load_img("path/to/image.jpg", target_size=(150, 150))
 
-# Convert image to an array and normalize
+# Преобразование изображения в массив и нормализация
 x = image.img_to_array(img) / 255.0
 x = np.expand_dims(x, axis=0)
 
-# Predict the class of the image
+# Предсказание класса изображения
 prediction = model.predict(x)[0][0]
 
-# Display the result
-print("Good nut" if prediction > 0.5 else "Bad nut")
+# Вывод результата
+print("Хороший орех" if prediction > 0.5 else "Плохой орех")
 ```
 
-## How to Train the Model on Your Own Data?
-1. Prepare your dataset by organizing images into `train/`, `val/`, and `test/` folders.
-2. Update the script with your dataset paths.
-3. Run the training process.
-4. Use the trained model for predictions on new images.
+## Как обучить модель на своих данных?
+1. Подготовьте свою базу изображений, разложив их по папкам (`train/`, `val/`, `test/`).
+2. Укажите пути к данным в скрипте.
+3. Запустите обучение.
+4. Используйте полученную модель для предсказаний на новых данных.
 
-## Possible Improvements
-- You can add hyperparameter configuration via a config file.
-- Improve data augmentation for better generalization.
-- Adding more layers requires testing for potential accuracy improvement or degradation.
+## Возможные доработки
+- Вы можете добавить настройку гиперпараметров через конфигурационный файл.
+- Улучшение генерации данных (аугментация изображений).
+- Добавление большего числа слоев требует тестирования на предмет улучшения/ухудшения **accuracy**.
 
-## License
-This project is licensed under the **MIT** license.
+## Лицензия
+Проект распространяется под лицензией **MIT**.
 
-## 💡If you find this project useful, you can support my work — even a small donation makes a difference
+## 💡Если Вы сочли мой проект полезным, Вы можете поддержать меня финансово — даже небольшое пожертвование имеет значение
 - **Crypto donation: USDT (TRC20):** `TCECqH8ZxXGCQuWZeto1nV9nawbeeV4fG8`
 - **Crypto donation: Bitcoin (BTC):** `bc1q3lvprzayxd3qulk0epk5dh58zx36mfev76wj30`
 - **Crypto donation: Ethereum (ETH):** `0x80DbC00Fd91bAb3D4FE6E6441Dae0719e6bF5c9e`
